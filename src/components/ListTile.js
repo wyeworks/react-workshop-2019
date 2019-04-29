@@ -4,6 +4,7 @@ class ListTile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      cards: props.cards,
       composing: false,
       newCardText: ''
     };
@@ -15,6 +16,35 @@ class ListTile extends Component {
     }));
   }
 
+  newCardTextChange = (e) => {
+    this.setState({
+      newCardText: e.target.value
+    });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetch(`/boards/${this.props.boardId}/lists/${this.props.id}/cards`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        card: {
+          text: this.state.newCardText
+        }
+      }),
+    }).then(res => res.json()).then((card) => {
+      this.setState(prevState => ({
+        composing: false,
+        cards: [...prevState.cards, card],
+        newCardText: ''
+      }))
+    });
+  }
+
   render() {
     return (
       <div className="ListTile">
@@ -23,7 +53,7 @@ class ListTile extends Component {
             <div className="ListTile-header-title">{this.props.name}</div>
           </div>
           <div className="ListTile-cards">
-            {this.props.cards.map(card => {
+            {this.state.cards.map(card => {
               return (
                 <div className="CardTile" key={card.id}>
                   <div className="CardTile-details">
@@ -34,8 +64,9 @@ class ListTile extends Component {
             })}
             { this.state.composing ?
               <div>
-                <form>
-                  <textarea className="ListTile-composer"></textarea>
+                <form onSubmit={this.handleSubmit}>
+                  <textarea className="ListTile-composer" value={this.state.newCardText} onChange={this.newCardTextChange}>
+                  </textarea>
                   <input className="ListTile-composer-add" type="submit" value="Add"/>
                   <div className="ListTile-composer-close" onClick={this.toggleComposer}></div>
                 </form>
