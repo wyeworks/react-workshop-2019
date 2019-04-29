@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListTile from './ListTile';
+import NewList from './NewList';
 
 class Board extends Component {
   constructor(props) {
@@ -18,6 +19,13 @@ class Board extends Component {
       });
     });
   }
+
+  handleAddList(list) {
+    this.setState(prevState => ({
+      lists: [...prevState.lists, list]
+    }));
+  }
+
   render() {
     return (
       <div className="Board">
@@ -42,9 +50,7 @@ class Board extends Component {
                   );
                 })
               }
-              <div className="NewList">
-                <a className="NewList-placeholder">Add a list…</a>
-              </div>
+              <NewList boardId={this.boardId} onListCreation={this.handleAddList.bind(this)} />
             </div>
           </div>
         </div>
