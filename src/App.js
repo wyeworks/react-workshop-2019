@@ -1,4 +1,5 @@
 import React from 'react';
+import Boards from './components/Boards';
 
 function App() {
   return (
@@ -8,7 +9,9 @@ function App() {
           <span className="App-header-logo-default"></span>
         </a>
       </div>
-      <div className="App-content"></div>
+      <div className="App-content">
+        <Boards />
+      </div>
     </div>
   );
 }
