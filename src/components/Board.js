@@ -9,9 +9,7 @@ class Board extends Component {
   }
 
   componentDidMount() {
-    fetch(`/boards/${this.boardId}`)
-      .then(res => res.json())
-      .then((board) => {
+    fetch(`/boards/${this.boardId}`).then(res => res.json()).then((board) => {
       this.setState({
         name: board.name,
         lists: board.lists
@@ -22,30 +20,26 @@ class Board extends Component {
   render() {
     return (
       <div className="Board">
-        <div className="Board-content">
-          <div className="Board-header">
-            <span className="Board-header-btn">
-              {this.state.name}
-            </span>
-          </div>
-          <div className="Board-canvas">
-            <div className="Board-canvas-content">
-              {
-                this.state.lists.map((list) => {
-                  return (
-                    <ListTile
-                      key={list.id}
-                      id={list.id}
-                      name={list.name}
-                      boardId={this.boardId}
-                      cards={list.cards}
-                    />
-                  );
-                })
-              }
-            </div>
-          </div>
-        </div>
+        <header>
+          <h1>
+            {this.state.name}
+          </h1>
+        </header>
+        <ul>
+          {
+            this.state.lists.map((list) => {
+              return (
+                <ListTile
+                  key={list.id}
+                  id={list.id}
+                  name={list.name}
+                  boardId={this.boardId}
+                  cards={list.cards}
+                />
+              );
+            })
+          }
+        </ul>
       </div>
     );
   }

@@ -10,16 +10,16 @@ class NewBoard extends Component {
     };
   }
 
-   titleChange = (e) => {
+  titleChange = (e) => {
     this.setState({
       title: e.target.value
     });
   }
 
-   handleSubmit = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
-     fetch('/boards', {
+    fetch('/boards', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -37,25 +37,19 @@ class NewBoard extends Component {
 
   render () {
     return (
-      <div className="NewBoard-overlay">
-        <div className="NewBoard-box">
-          <form onSubmit={this.handleSubmit}>
-            <div className="NewBoard-tile">
-              <Link to='/'>
-                <button type="button" className="NewBoard-close-button">
-                  <span className="icon-sm icon-close"></span>
-                </button>
-              </Link>
-              <div>
-                <input placeholder="Add board title" className="NewBoard-tile-input" value={this.state.title} onChange={this.titleChange} />
-              </div>
-            </div>
-            <button className="NewBoard-tile-btn" type="">Create Board</button>
-          </form>
-        </div>
+      <div className="NewBoard">
+        <form onSubmit={this.handleSubmit}>
+          <div className="tile">
+            <Link to='/' class="close-button">
+              <span className="icon" />
+            </Link>
+            <input placeholder="Add board title" value={this.state.title} onChange={this.titleChange} />
+          </div>
+          <button type="">Create Board</button>
+        </form>
       </div>
     );
   }
 }
 
- export default NewBoard;
+export default NewBoard;

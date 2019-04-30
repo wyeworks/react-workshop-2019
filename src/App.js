@@ -8,19 +8,19 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App-container">
-        <div className="App-header">
-          <Link className="App-header-logo" to="/">
-            <span className="App-header-logo-default"></span>
+        <header>
+          <Link to="/">
+            <span className="logo" />
           </Link>
-        </div>
-        <div className="App-content">
+        </header>
+        <main>
           <Switch>
-            <Route exact path='/' component={Boards} />
-            <Route path='/boards/new' component={Boards} />
-            <Route path='/boards/:boardId' component={Board} />
+            <Route exact path='/' component={Boards}/>
+            <Route path='/boards/new' component={Boards}/>
+            <Route path='/boards/:boardId' component={Board}/>
           </Switch>
-          <Route path='/boards/new' component={NewBoard} />
-        </div>
+          <Route path='/boards/new' component={NewBoard}/>
+        </main>
       </div>
     </BrowserRouter>
   );

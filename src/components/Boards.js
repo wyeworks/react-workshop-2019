@@ -17,27 +17,22 @@ class Boards extends Component {
   render() {
     return (
       <div className="Boards">
-        <div className="Boards-container">
-          <div className="Boards-header">
-            <div className="Boards-header-icon">
-              <span className="Boards-header-icon-member"></span>
-            </div>
-            <h3 className="Boards-header-name">Personal Boards</h3>
-          </div>
-
-          <ul className="Boards-list-container">
-            {
-              this.state.boards.map((board) => {
-                return <BoardTile key={board.id} id={board.id} name={board.name} />
-              })
-            }
-            <li className="NewBoardLink">
-              <Link className="NewBoardLink-link" to='/boards/new'>
-                Create new board…
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <header>
+          <span className="icon" />
+          <h2>Personal Boards</h2>
+        </header>
+        <ul>
+          {
+            this.state.boards.map((board) => {
+              return <BoardTile key={board.id} id={board.id} name={board.name} />
+            })
+          }
+          <li>
+            <Link className="NewBoardLink" to='/boards/new'>
+              Create new board…
+            </Link>
+          </li>
+        </ul>
       </div>
     );
   }

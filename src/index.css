@@ -1,3 +1,12 @@
+/***
+
+These CSS styles were created just for the Workshop.
+This is not an example of a good CSS ruleset.
+It does not follow best practices, just tries to keep the workshop code as simple as possible.
+If you'd like to learn CSS, please use any of the wonderful web resources out there and not this.
+
+***/
+
 @font-face {
   font-family: trellicons;
   src: url('https://a.trellocdn.com/dist/fonts/trellicons.bf57a510b0c02a2e1611.eot');
@@ -57,7 +66,7 @@ ol, ul {
   height: 100%;
 }
 
-.App-header {
+.App-container > header {
   height: 30px;
   position: relative;
   flex: none;
@@ -68,7 +77,7 @@ ol, ul {
   box-shadow: 0 1px 1px rgba(0,0,0,.1);
 }
 
-.App-header-logo {
+.App-container > header > a {
   bottom: 0;
   display: block;
   height: 30px;
@@ -86,11 +95,11 @@ ol, ul {
   background-color: transparent;
 }
 
-.App-header-logo:hover {
+.App-container > header > a:hover {
   opacity: .8;
 }
 
-.App-header-logo-default {
+.App-container > header > a > .logo {
   background-image: url('https://i.imgur.com/W4F3eTm.png');
   background-position: 100% 0;
   background-repeat: no-repeat;
@@ -102,7 +111,7 @@ ol, ul {
   width: 150px;
 }
 
-.App-content {
+main {
   flex-grow: 1;
   outline: none;
   position: relative;
@@ -110,28 +119,21 @@ ol, ul {
 }
 
 .Boards {
-  margin: auto;
-}
-
-.Boards-container {
   margin: 0 auto;
   max-width: 1250px;
   padding: 20px 16px 0;
 }
 
-.Boards-header {
+.Boards > header {
   margin: 0 0 0 38px;
   padding: 0 0 11px;
   position: relative;
 }
 
-.Boards-header-icon {
+.Boards > header > .icon {
   left: -38px;
   position: absolute;
   top: 0;
-}
-
-.Boards-header-icon-member {
   color: #999;
   height: 32px;
   font-size: 20px;
@@ -147,11 +149,11 @@ ol, ul {
   text-decoration: none;
 }
 
-.Boards-header-icon-member:before {
+.Boards > header > .icon:before {
   content: "\E938";
 }
 
-.Boards-header-name {
+.Boards > header > h2 {
   display: inline-block;
   line-height: 24px;
   margin: 3px 0 0;
@@ -159,24 +161,39 @@ ol, ul {
   font-weight: 700;
 }
 
-.Boards-list-container {
+.Boards > ul {
   display: flex;
   flex-wrap: wrap;
 }
 
-.NewBoardLink {
-  box-sizing: border-box;
-  padding: 0 8px 8px 0;
+.Boards > ul > li {
   position: relative;
+  padding: 0 8px 8px 0;
   width: 25%;
+  box-sizing: border-box;
 }
 
-.NewBoardLink-link {
+.Boards > ul > li > a {
+  display: block;
   border-radius: 3px;
+  background-color: #0079bf;
+  color: #fff;
   line-height: 20px;
   margin: 0 8px 8px 0;
   padding: 8px;
   position: relative;
+  text-decoration: none;
+  min-height: 64px;
+}
+
+.Boards > ul > li > a:hover {
+  background-image: linear-gradient(
+    0deg,
+    rgba(0,0,0,0.20) 0%,
+    rgba(0,0,0,0.15) 100%);
+}
+
+.Boards > ul > li > a.NewBoardLink {
   background-color: #e2e4e6;
   color: #838c91;
   display: table-cell;
@@ -185,63 +202,19 @@ ol, ul {
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
-  width: inherit;
 }
 
-.NewBoardLink-link:hover {
-  background-color: #d6dadc;
-  color: #4d4d4d;
-}
-
-.BoardTile {
-  box-sizing: border-box;
-  padding: 0 8px 8px 0;
-  position: relative;
-  width: 25%;
-}
-
-.BoardTile-link,
-.BoardTile-fade {
-  border-radius: 3px;
+.BoardTile > a {
   display: block;
-}
-
-.BoardTile-link {
-  background-color: #0079bf;
-  color: #fff;
-  line-height: 20px;
-  margin: 0 8px 8px 0;
-  padding: 8px;
-  position: relative;
-  text-decoration: none;
-}
-
-.BoardTile-fade {
-  background-color: rgba(0,0,0,.15);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-}
-
-.BoardTile-link:hover .BoardTile-fade {
-  background-color: rgba(0,0,0,.25);
-}
-
-.BoardTile-details {
-  display: block;
-  min-height: 64px;
   padding-right: 40px;
   position: relative;
-}
-
-.BoardTile-details-name {
+  font-weight: bold;
   font-size: 16px;
-  font-weight: 700;
   display: inline-block;
   overflow: hidden;
   max-height: 40px;
+  margin-block-end: 0;
+  margin-block-start: 0;
 }
 
 .Board {
@@ -251,9 +224,6 @@ ol, ul {
   right: 0;
   top: 0;
   bottom: 0;
-}
-
-.Board-content {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -261,7 +231,7 @@ ol, ul {
   transition: margin .1s ease-in;
 }
 
-.Board-header {
+.Board > header {
   flex: none;
   height: auto;
   overflow: hidden;
@@ -270,7 +240,7 @@ ol, ul {
   transition: padding .1s ease-in;
 }
 
-.Board-header-btn {
+.Board > header > h1 {
   border-radius: 3px;
   color: #f6f6f6;
   cursor: default;
@@ -286,12 +256,9 @@ ol, ul {
   text-decoration: none;
 }
 
-.Board-canvas {
+.Board > ul {
   position: relative;
   flex-grow: 1;
-}
-
-.Board-canvas-content {
   user-select: none;
   white-space: nowrap;
   margin-bottom: 10px;
@@ -299,14 +266,9 @@ ol, ul {
   overflow-y: hidden;
   padding-bottom: 10px;
   padding-right: 56px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
 }
 
-.NewBoard-overlay {
+.NewBoard {
   position: fixed;
   top: 0;
   left: 0;
@@ -317,7 +279,7 @@ ol, ul {
 }
 
 
-.NewBoard-box {
+.NewBoard > form {
   position: fixed;
   left: 50%;
   margin-top: 24px;
@@ -330,8 +292,7 @@ ol, ul {
   z-index: 25;
 }
 
-.NewBoard-tile {
-  background-color: #fff;
+.NewBoard .tile {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   height: 96px;
@@ -347,7 +308,7 @@ ol, ul {
   z-index: 30;
 }
 
-.NewBoard-close-button {
+.NewBoard .close-button {
   float: right;
   position: relative;
   right: -2px;
@@ -367,7 +328,7 @@ ol, ul {
   cursor: pointer;
 }
 
-.icon-sm {
+.NewBoard .close-button .icon {
   height: 18px;
   font-size: 12px;
   line-height: 18px;
@@ -383,11 +344,12 @@ ol, ul {
   color: #fff;
 }
 
-.icon-sm:before {
+.NewBoard .close-button .icon:before {
   content: "\E916";
 }
 
-.NewBoard-tile-input {
+.NewBoard input {
+  border-radius: 3px;
   position: relative;
   left: -8px;
   width: calc(100% - 18px - 16px);
@@ -427,12 +389,11 @@ ol, ul {
 }
 
 
-.NewBoard-tile-input:hover {
+.NewBoard input:hover, .NewBoard input:focus {
   background: hsla(0,0%,100%,.15);
-  border-radius: 3px;
 }
 
-.NewBoard-tile-btn {
+.NewBoard button {
   margin-bottom: 8px;
   background: #5aac44;
   -webkit-box-shadow: 0 1px 0 #519839;
@@ -449,18 +410,16 @@ ol, ul {
   margin: 8px 4px 0 0;
   padding: 5px 16px;
   text-align: center;
-
-
   box-sizing: border-box;
   -webkit-appearance: none;
   border-radius: 3px;
 }
 
-.NewBoard-tile-btn:hover {
+.NewBoard button:hover {
   background: #519839 100%;
 }
 
-.NewBoard-tile-btn.disabled {
+.NewBoard button.disabled {
   background: #f8f9f9;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -469,7 +428,7 @@ ol, ul {
   font-weight: 700;
 }
 
-.NewBoard-tile-btn.disabled:hover {
+.NewBoard button.disabled:hover {
   background: #f8f9f9;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -502,53 +461,71 @@ ol, ul {
   max-height: 100%;
   position: relative;
   white-space: normal;
+  padding: 0 4px 6px 4px;
 }
 
-.ListTile-header {
+.ListTile h2 {
   flex: 0 0 auto;
   padding: 8px 10px;
   position: relative;
   min-height: 18px;
-}
-
-.ListTile-header-title {
   font-weight: 700;
-  margin: -3px -5px;
-  padding: 3px 5px;
+  font-size: 1em;
+  margin-block-start: 0;
+  margin-block-end: 0;
   overflow: hidden;
   word-wrap: break-word;
   height: 24px;
 }
 
-.ListTile-cards {
+.ListTile ol {
   flex: 1 1 auto;
   margin-bottom: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  margin: 0 4px;
   padding: 0 4px;
   z-index: 1;
   min-height: 0;
 }
 
-.ListTile-add-card {
+.ListTile ol li {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  border-radius: 3px;
+  display: block;
+  margin-bottom: 6px;
+  max-width: 300px;
+  min-height: 20px;
+  text-decoration: none;
+  padding: 6px 6px 6px 8px;
+  clear: both;
+  word-wrap: break-word;
+  color: #4d4d4d;
+}
+
+.ListTile-content > div {
   border-radius: 0 0 3px 3px;
   color: #838c91;
   display: block;
   flex: 0 0 auto;
   padding: 8px 10px;
+  margin: 0 4px;
   position: relative;
   text-decoration: none;
   user-select: none;
 }
 
-.ListTile-add-card:hover {
+.ListTile-content > div:hover {
   background-color: #cdd2d4;
   color: #4d4d4d;
   text-decoration: underline;
 }
 
-.ListTile-composer {
+.ListTile form {
+  margin: 0 4px;
+}
+
+.ListTile form textarea {
   box-sizing: border-box;
   border: none;
   border-bottom: 1px solid #ccc;
@@ -565,7 +542,7 @@ ol, ul {
   outline: 0;
 }
 
-.ListTile-composer-add {
+.ListTile form input {
   border-radius: 3px;
   border: none;
   cursor: pointer;
@@ -580,7 +557,27 @@ ol, ul {
   transition: background .3s ease;
 }
 
-.ListTile-composer-close {
+.ListTile form input:hover {
+  background: #519839 100%;
+}
+
+.ListTile form button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.ListTile form button {
   display: inline-block;
   font-family: trellicons;
   text-align: center;
@@ -591,37 +588,6 @@ ol, ul {
   color: #999;
 }
 
-.ListTile-composer-close:before {
+.ListTile form button .icon:before {
   content: "\E916";
-}
-
-.CardTile {
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-  border-radius: 3px;
-  cursor: pointer;
-  display: block;
-  margin-bottom: 6px;
-  max-width: 300px;
-  min-height: 20px;
-  position: relative;
-  text-decoration: none;
-  z-index: 0;
-}
-
-.CardTile-details {
-  overflow: hidden;
-  padding: 6px 6px 2px 8px;
-  position: relative;
-  z-index: 10;
-}
-
-.CardTile-title {
-  clear: both;
-  display: block;
-  margin: 0 0 4px;
-  overflow: hidden;
-  text-decoration: none;
-  word-wrap: break-word;
-  color: #4d4d4d;
 }

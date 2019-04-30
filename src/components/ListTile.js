@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class ListTile extends Component {
   constructor(props) {
@@ -49,32 +49,31 @@ class ListTile extends Component {
     return (
       <div className="ListTile">
         <div className="ListTile-content">
-          <div className="ListTile-header">
-            <div className="ListTile-header-title">{this.props.name}</div>
-          </div>
-          <div className="ListTile-cards">
-            {this.state.cards.map(card => {
-              return (
-                <div className="CardTile" key={card.id}>
-                  <div className="CardTile-details">
-                    <span className="CardTile-title">{card.text}</span>
-                  </div>
-                </div>
-              );
-            })}
-            { this.state.composing ?
-              <div>
-                <form onSubmit={this.handleSubmit}>
-                  <textarea className="ListTile-composer" value={this.state.newCardText} onChange={this.newCardTextChange}>
-                  </textarea>
-                  <input className="ListTile-composer-add" type="submit" value="Add"/>
-                  <div className="ListTile-composer-close" onClick={this.toggleComposer}></div>
-                </form>
-              </div>
-            :
-              <a className="ListTile-add-card" onClick={this.toggleComposer}>Add a card…</a>
+          <h2>
+            {this.props.name}
+          </h2>
+          <ol>
+            {
+              this.state.cards.map((card) => {
+                return (
+                  <li key={card.id}>
+                    {card.text}
+                  </li>
+                )
+              })
             }
-          </div>
+          </ol>
+          { this.state.composing ?
+            <form onSubmit={this.handleSubmit}>
+              <textarea value={this.state.newCardText} onChange={this.newCardTextChange}></textarea>
+              <input type="submit" value="Add"/>
+              <button onClick={this.toggleComposer}>
+                <span className="icon" />
+              </button>
+            </form>
+          :
+            <div onClick={this.toggleComposer}>Add a card…</div>
+          }
         </div>
       </div>
     );
