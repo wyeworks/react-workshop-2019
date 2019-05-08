@@ -15,11 +15,11 @@ function App() {
         </header>
         <main>
           <Switch>
-            <Route exact path='/' component={Boards}/>
-            <Route path='/boards/new' component={Boards}/>
-            <Route path='/boards/:boardId' component={Board}/>
+            <Route exact path='/' component={Boards} />
+            <Route path='/boards/new' component={Boards} />
+            <Route path='/boards/:boardId' component={Board} />
           </Switch>
-          <Route path='/boards/new' component={NewBoard}/>
+          <Route path='/boards/new' component={NewBoard} />
         </main>
       </div>
     </BrowserRouter>

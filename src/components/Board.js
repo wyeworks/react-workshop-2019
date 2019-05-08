@@ -9,11 +9,13 @@ class Board extends Component {
   }
 
   componentDidMount() {
-    fetch(`/boards/${this.boardId}`).then(res => res.json()).then((board) => {
-      this.setState({
-        name: board.name,
-        lists: board.lists
-      });
+    fetch(`/boards/${this.boardId}`)
+      .then(res => res.json())
+      .then((board) => {
+        this.setState({
+          name: board.name,
+          lists: board.lists
+        });
     });
   }
 
