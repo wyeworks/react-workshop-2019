@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import BoardTile from './BoardTile';
 class Boards extends Component {
 
   constructor(props) {
@@ -23,13 +23,7 @@ class Boards extends Component {
         <ul>
           {
             this.state.boards.map((board) => {
-              return (
-                <li key={board.id} className="BoardTile">
-                  <a>
-                    {board.name}
-                  </a>
-                </li>
-              );
+              return <BoardTile key={board.id} id={board.id} name={board.name} />
             })
           }
           <li>
