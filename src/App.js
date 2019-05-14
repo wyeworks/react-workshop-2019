@@ -1,4 +1,5 @@
 import React from 'react';
+import Boards from './components/Boards';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         </a>
       </header>
       <main>
+        <Boards/>
       </main>
     </div>
   );
