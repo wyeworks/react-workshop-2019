@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 
 class Boards extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { boards: [] };
+  }
+
+  componentDidMount() {
+    fetch("/boards").then(res => res.json()).then((boards) => {
+      this.setState({ boards });
+    });
+  }
+
   render() {
     return (
       <div className="Boards">
@@ -9,16 +21,17 @@ class Boards extends Component {
           <h2>Personal Boards</h2>
         </header>
         <ul>
-          <li className="BoardTile">
-            <a>
-              Workshop
-            </a>
-          </li>
-          <li className="BoardTile">
-            <a>
-              Team
-            </a>
-          </li>
+          {
+            this.state.boards.map((board) => {
+              return (
+                <li key={board.id} className="BoardTile">
+                  <a>
+                    {board.name}
+                  </a>
+                </li>
+              );
+            })
+          }
           <li>
             <a className="NewBoardLink">
               Create new board…
