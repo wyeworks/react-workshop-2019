@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 class BoardTile extends Component {
   render() {
     return (
       <li className="BoardTile">
-        <a>
+        <Link to={`/boards/${this.props.id}`}>
           {this.props.name}
-        </a>
+        </Link>
       </li>
     );
   }

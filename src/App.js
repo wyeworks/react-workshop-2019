@@ -1,5 +1,6 @@
 import React from 'react';
 import Boards from './components/Boards';
+import Board from './components/Board';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <main>
           <Switch>
             <Route exact path='/' component={Boards}/>
+            <Route path='/boards/:boardId' component={Board} />
           </Switch>
         </main>
       </div>
