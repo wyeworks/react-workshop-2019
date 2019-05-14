@@ -1,18 +1,23 @@
 import React from 'react';
 import Boards from './components/Boards';
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App-container">
-      <header>
-        <a>
-          <span className="logo" />
-        </a>
-      </header>
-      <main>
-        <Boards/>
-      </main>
-    </div>
+    <BrowserRouter>
+      <div className="App-container">
+        <header>
+          <Link to="/">
+            <span className="logo" />
+          </Link>
+        </header>
+        <main>
+          <Switch>
+            <Route exact path='/' component={Boards}/>
+          </Switch>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 
