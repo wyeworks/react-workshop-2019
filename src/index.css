@@ -371,10 +371,6 @@ main {
   cursor: text;
 }
 
-.NewBoard-tile-input::placeholder {
-  color: #fff;
-}
-
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #fff;
 }
@@ -387,7 +383,6 @@ main {
 :-moz-placeholder { /* Firefox 18- */
   color: #fff;
 }
-
 
 .NewBoard input:hover, .NewBoard input:focus {
   background: hsla(0,0%,100%,.15);
