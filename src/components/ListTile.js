@@ -40,7 +40,14 @@ class ListTile extends Component {
         cards: [...prevState.cards, card],
         newCardText: ''
       }))
+      this.props.channel.push("card_created", { list_id: this.props.id });
     });
+  }
+
+  componentDidUpdate(_prevProps) {
+    if (this.props.cards !== this.state.cards) {
+      this.setState({ cards: this.props.cards })
+    }
   }
 
   render() {
