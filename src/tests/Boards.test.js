@@ -28,9 +28,7 @@ describe('components rendered', () => {
   it('renders one BoardTile component for each board', () => {
     expect(wrapper.find(Boards)).toHaveLength(1);
 
-    setImmediate(() => {
-      wrapper.update();
-      expect(wrapper.find(BoardTile)).toHaveLength(2);
-    });
+    wrapper.update();
+    expect(wrapper.find(BoardTile)).toHaveLength(2);
   });
 });
