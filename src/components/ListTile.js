@@ -50,7 +50,7 @@ class ListTile extends Component {
       <div className="ListTile">
         <div className="ListTile-content">
           <h2>
-            {this.props.name}
+            {this.props.title}
           </h2>
           <ol>
             {

@@ -33,7 +33,7 @@ class Board extends Component {
                 <ListTile
                   key={list.id}
                   id={list.id}
-                  name={list.name}
+                  title={list.title}
                   boardId={this.boardId}
                   cards={list.cards}
                 />
