@@ -32,9 +32,7 @@ class ListTile extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        card: {
-          text: this.state.newCardText
-        }
+        text: this.state.newCardText
       }),
     }).then(res => res.json()).then((card) => {
       this.setState(prevState => ({

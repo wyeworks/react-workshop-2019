@@ -26,9 +26,7 @@ class NewBoard extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        board: {
-          name: this.state.title
-        }
+        name: this.state.title
       }),
     }).then(res => res.json()).then((board) => {
       this.props.history.push(`/boards/${board.id}`);
